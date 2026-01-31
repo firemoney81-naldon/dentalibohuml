@@ -1,23 +1,542 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
+
+
+    <!-- JSON-LD 구조화 데이터 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "40대 치아보험 추천 비교센터",
+      "url": "https://yourdomain.com",
+      "serviceType": "보험 추천 및 비교",
+      "provider": {
+        "@type": "Organization",
+        "name": "치아보험 전문 비교 플랫폼",
+        "url": "https://yourdomain.com",
+        "description": "40대 맞춤 치아보험 상품을 비교 분석하고 추천하는 전문 플랫폼입니다."
+      },
+      "description": "40대 고객을 위한 비갱신형, 갱신형 치아보험 상품의 장단점 분석, 임플란트/크라운 보장 범위 비교, 면책 기간 및 감액 기간 등 핵심 정보를 제공합니다. 고객님의 조건에 맞는 최적의 치아보험 상품을 추천해 드립니다.",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "치아보험 상품 종류",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "비갱신형 치아보험"
+            },
+            "description": "40대 고객에게 유리한 초기 보험료 고정 상품. 장기적인 관점에서 유리한 치아보험 가입 방법."
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "갱신형 치아보험"
+            },
+            "description": "초기 보험료가 저렴하지만 갱신 시 보험료가 인상되는 상품. 단기적으로 치과 치료를 계획하는 경우 적합."
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "보철 치료 집중형 치아보험"
+            },
+            "description": "임플란트, 틀니, 브릿지 등 고가 치료에 집중하여 보장하는 상품. 보장금액이 높음."
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "보존 치료 집중형 치아보험"
+            },
+            "description": "충치, 크라운, 인레이 등 가벼운 치료에 집중하여 보장하는 상품. 보철 치료 보장은 약함."
+          }
+        ]
+      }
+    }
+    </script>
+
+    <!-- Google Fonts for professional look -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <!-- CSS Styling -->
+    <style>
+        body {
+            font-family: "Noto Sans KR", sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.8;
+            background-color: #f7f9fc; /* 부드러운 배경색 */
+            color: #333;
+            word-break: keep-all;
+            font-size: 16px;
+        }
+        header {
+            background-color: #004d99; /* 메인 컬러: 신뢰감 있는 블루 */
+            color: white;
+            padding: 3rem 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+        header h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin: 0.5rem 0 1rem;
+            line-height: 1.4;
+        }
+        header p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        nav {
+            background-color: #003366; /* 헤더보다 진한 네비게이션 색상 */
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease, transform 0.3s ease;
+            font-size: 1.05rem;
+            padding: 0.5rem;
+        }
+        nav a:hover {
+            color: #ffc107; /* 강조색: 밝은 노란색 */
+            transform: translateY(-2px);
+        }
+        main {
+            max-width: 1100px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+            background-color: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.08);
+            border-radius: 12px;
+            padding-bottom: 2rem;
+        }
+        section {
+            padding: 2.5rem 0;
+        }
+        h2 {
+            font-size: 2rem;
+            color: #003366;
+            font-weight: 700;
+            margin-top: 0;
+            padding-top: 1.5rem;
+            border-bottom: 3px solid #e0f0ff;
+            text-align: center;
+        }
+        h3 {
+            font-size: 1.6rem;
+            color: #004d99;
+            margin-top: 2rem;
+            padding-left: 1rem;
+            border-left: 4px solid #004d99;
+            font-weight: 600;
+        }
+        p {
+            text-align: justify;
+            margin-bottom: 1.5rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        th, td {
+            padding: 1.2rem;
+            border: 1px solid #e0e0e0;
+            text-align: left;
+        }
+        th {
+            background-color: #004d99;
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        tr:nth-child(even) {
+            background-color: #f8f8f8;
+        }
+        tr:hover {
+            background-color: #f0faff;
+        }
+        .cta-button {
+            display: block;
+            background-color: #ff6600; /* CTA 강조색 */
+            color: white;
+            font-weight: 700;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            margin: 2.5rem auto;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            text-align: center;
+            font-size: 1.3rem;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            max-width: 400px;
+        }
+        .cta-button:hover {
+            background-color: #e65c00;
+            transform: translateY(-3px);
+        }
+        .keyword-tags {
+            margin: 2.5rem 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+        .keyword-tags a {
+            background-color: #e0f0ff;
+            color: #0066cc;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            border: 1px solid #cceeff;
+        }
+        .keyword-tags a:hover {
+            background-color: #b3d1ff;
+            transform: scale(1.05);
+        }
+        footer {
+            text-align: center;
+            padding: 2.5rem;
+            font-size: 0.9rem;
+            color: #777;
+            background-color: #e0eaf1;
+            margin-top: 3rem;
+            border-top: 1px solid #d0dbe4;
+        }
+        .external-link {
+            display: inline-block;
+            color: #0066cc;
+            font-weight: 500;
+            margin-top: 1rem;
+            text-decoration: underline;
+        }
+        .highlight {
+            font-weight: 700;
+            color: #004d99;
+        }
+        .graph-container {
+            margin: 3rem 0;
+            padding: 2rem;
+            background-color: #fcfcfc;
+            border-radius: 10px;
+            border: 1px solid #e0e0e0;
+        }
+        .graph-container h3 {
+            border-left: none;
+            text-align: center;
+        }
+        .input-form {
+            background-color: #f5fafd;
+            padding: 2.5rem;
+            border-radius: 10px;
+            border: 1px solid #dbe9f7;
+            margin: 3rem 0;
+        }
+        .input-form label {
+            display: block;
+            margin-top: 1rem;
+            font-weight: 600;
+            color: #003366;
+        }
+        .input-form input[type="text"],
+        .input-form input[type="number"],
+        .input-form select,
+        .input-form textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-top: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        .input-form button {
+            background-color: #007bff;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+        .accordion dt {
+            font-weight: 700;
+            margin-top: 1.5rem;
+            cursor: pointer;
+            color: #0066cc;
+            background-color: #f5fafd;
+            padding: 1.2rem;
+            border-left: 5px solid #0066cc;
+            transition: background-color 0.3s ease;
+            border-radius: 5px;
+        }
+        .accordion dt:hover {
+            background-color: #e6f2ff;
+        }
+        .accordion dd {
+            margin: 0.5rem 0 1.5rem 1rem;
+            padding-left: 1rem;
+            border-left: 2px dashed #ccc;
+            display: none;
+            padding-right: 1rem;
+        }
+        .accordion dt.active + dd {
+            display: block;
+        }
+        .list-style-none {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>40대 치아보험 추천 비교센터</h1>
+        <p>40대 고객을 위한 합리적인 비갱신형 치아보험 가입 팁과 전문가 추천 순위 정보를 제공합니다.</p>
+        <div class="keyword-tags" aria-label="연관 검색 키워드">
+            <a href="#가격비교">40대치아보험가격</a>
+            <a href="#장단점">40대비갱신형치아보험</a>
+            <a href="#보장내용">임플란트보험</a>
+            <a href="#가입팁">치아보험면책기간</a>
+            <a href="#순위">치아보험추천순위</a>
+            <a href="#가입팁">치아보험가입조건</a>
+            <a href="#비용">치아보험비용</a>
+            <a href="#장단점">치아보험장단점</a>
+            <a href="#가격비교">치과치료비용</a>
+            <a href="#보장내용">크라운보험</a>
+            <a href="#가입팁">치아보험가입시기</a>
+            <a href="#가격비교">치아보험저렴한곳</a>
+            <a href="#순위">치아보험비교사이트</a>
+            <a href="#가입팁">내돈내산치아보험후기</a>
+            <a href="#장단점">비갱신형갱신형차이점</a>
+        </div>
+    </header>
+
     <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
+        <ul>
+            <li><a href="#가입이유">40대 가입 이유</a></li>
+            <li><a href="#장단점">상품 비교</a></li>
+            <li><a href="#보장내용">보장 내용 분석</a></li>
+            <li><a href="#가입팁">가입 노하우</a></li>
+            <li><a href="#자주묻는질문">자주 묻는 질문</a></li>
+            <li><a href="#상담신청">무료 상담 신청</a></li>
+        </ul>
     </nav>
+
     <main>
-      <h1>Home page</h1>
+        <section id="가입이유">
+            <h2>40대가 치아보험에 주목해야 하는 이유: 치과 치료비용 분석</h2>
+            <p>우리나라 40대는 가정의 경제를 책임지는 중요한 시기이지만, 동시에 치아 건강에 적신호가 켜지는 연령대입니다. 2026년 기준으로 국민건강보험공단 자료에 따르면 40대 후반부터 치아우식증(충치)과 치주 질환(잇몸병) 발병률이 급증하며, 50대 이상에서는 임플란트, 틀니, 브릿지와 같은 고가의 보철 치료가 필수적으로 요구되는 경우가 많습니다. <span class="highlight">**40대치아보험추천**</span>이 강조되는 이유는 바로 이 시기부터 본격적인 치과 치료 <span class="highlight">**비용**</span> 부담이 시작되기 때문입니다.</p>
+
+            <h3>40대 치과 치료 비용 실태 (2026년 예상)</h3>
+            <p>일반적으로 임플란트 1개당 <span class="highlight">**가격**</span>은 100만 원에서 200만 원을 호가합니다. 크라운 치료 역시 개당 수십만 원의 <span class="highlight">**금액**</span>이 발생합니다. 만약 여러 개의 치아에 문제가 생겨 보철 치료가 필요해진다면, 수백만 원에서 천만 원이 넘는 <span class="highlight">**치과치료비용**</span>이 한 번에 지출될 수 있습니다. 40대 중반 이후부터는 치아의 노화가 가속화되고 잇몸 건강이 약해지면서 치료 주기가 짧아지는 경향이 있습니다. <span class="highlight">**내돈내산**</span>으로 모든 <span class="highlight">**치과치료비용**</span>을 감당하는 것은 가계 경제에 큰 부담으로 작용할 수밖에 없습니다.</p>
+
+            <h3>치아보험이 필요한 이유: 보철치료 보장</h3>
+            <p>국민건강보험의 혜택이 적용되는 만 65세 이상의 임플란트, 틀니와 달리, 40대는 대부분의 보철 치료와 비급여 치료에 대해 <span class="highlight">**본인 부담금**</span>이 발생합니다. <span class="highlight">**치아보험**</span>은 이러한 비급여 항목에 대한 <span class="highlight">**예상**</span> 비용을 대비할 수 있는 효과적인 방법입니다. 특히 <span class="highlight">**40대치아보험**</span>은 노후를 대비하는 관점에서 <span class="highlight">**비갱신형**</span>을 선택하는 것이 장기적으로 <span class="highlight">**보험료**</span> 인상을 막아주는 현명한 <span class="highlight">**가입**</span> 전략으로 꼽힙니다.</p>
+        </section>
+
+        <section id="장단점">
+            <h2>갱신형 vs 비갱신형 치아보험 장단점 비교</h2>
+            <p>40대 고객이 <span class="highlight">**치아보험**</span>을 <span class="highlight">**가입**</span>할 때 가장 먼저 고민하는 것은 <span class="highlight">**갱신형**</span>과 <span class="highlight">**비갱신형**</span> 중 어떤 상품을 선택할지 여부입니다. 두 상품은 <span class="highlight">**보험료**</span> 산출 방식과 장기적인 <span class="highlight">**비용**</span> 부담에서 큰 <span class="highlight">**차이점**</span>을 보입니다. 40대 중반 이후에는 치과 질환 발생 위험이 높아지므로, <span class="highlight">**갱신형**</span>의 경우 갱신 시점에 <span class="highlight">**보험료**</span> 인상 폭이 커질 수 있습니다. 따라서 장기적으로 유지할 계획이라면 <span class="highlight">**40대비갱신형치아보험**</span>을 <span class="highlight">**추천**</span>하는 경우가 많습니다.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>구분</th>
+                        <th>갱신형 치아보험</th>
+                        <th>비갱신형 치아보험</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>보험료 특징</strong></td>
+                        <td>초기 보험료가 저렴함.</td>
+                        <td>초기 보험료가 갱신형보다 높음.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>가격 변동</strong></td>
+                        <td>갱신 주기(5년, 10년 등)마다 보험료가 상승할 수 있음.</td>
+                        <td>가입 시점의 보험료가 만기 시까지 고정됨.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>총 납입액 (장기)</strong></td>
+                        <td>40대 이후 치과 치료 위험률 상승으로 총 납입액이 커질 가능성 높음.</td>
+                        <td>총 납입액을 미리 예측할 수 있어 장기적인 재정 계획에 유리함.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>추천 대상</strong></td>
+                        <td>단기간 동안만 보장을 원하거나 초기 <span class="highlight">**보험료**</span>가 부담스러운 고객.</td>
+                        <td>장기간(만기 80세 이상) 보장을 원하며 <span class="highlight">**40대치아보험**</span>의 <span class="highlight">**장점**</span>을 극대화하려는 고객.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p><strong>비갱신형 치아보험</strong>은 특히 <span class="highlight">**40대**</span> 고객에게 <span class="highlight">**추천**</span>되는 이유가 명확합니다. 40대에 <span class="highlight">**가입**</span>하여 80세 만기까지 유지할 경우, 갱신 시점에 보험료가 급격히 인상되는 부담 없이 안정적인 <span class="highlight">**치과치료**</span> 대비가 가능합니다. <span class="highlight">**치아보험가격**</span> <span class="highlight">**비교**</span> 시 갱신형과 비갱신형의 <span class="highlight">**장단점**</span>을 명확히 파악하고 선택해야 후회 없는 <span class="highlight">**가입**</span>이 될 수 있습니다. <span class="highlight">**치아보험순위**</span>나 <span class="highlight">**견적**</span>을 알아볼 때, 단순히 현재 <span class="highlight">**금액**</span>만 볼 것이 아니라, 총 납입 <span class="highlight">**비용**</span>을 고려해야 합니다.</p>
+        </section>
+
+        <section id="보장내용">
+            <h2>40대 치아보험 핵심 보장 내용 분석: 보존치료 vs 보철치료</h2>
+            <p><span class="highlight">**치아보험**</span>의 보장은 크게 <span class="highlight">**보존치료**</span>와 <span class="highlight">**보철치료**</span>로 나뉩니다. <span class="highlight">**40대치아보험**</span> <span class="highlight">**가입**</span> 시에는 이 두 가지 보장 내용을 꼼꼼히 확인하여 본인에게 필요한 보장을 강화해야 합니다.</p>
+
+            <h3>1. 보존치료 (충치, 크라운, 인레이)</h3>
+            <p>보존치료는 치아를 발치하지 않고 보존하는 치료입니다. 주로 충치 치료 시 사용됩니다. 보존치료는 아말감, 레진, 인레이, 온레이, 크라운 등으로 나뉩니다. 국민건강보험이 적용되는 아말감과 달리, <span class="highlight">**크라운**</span>, 인레이, 레진은 비급여 항목으로 분류되어 환자 부담이 큽니다. <span class="highlight">**치아보험**</span>에서는 비급여 보존치료에 대해 횟수 제한 없이 보장하는 상품이 많으며, 특히 40대의 경우 <span class="highlight">**크라운 치료**</span> 보장이 중요합니다. 충치가 깊어지거나 신경치료 후에는 반드시 <span class="highlight">**크라운**</span>을 씌워야 하므로, <span class="highlight">**치아보험견적**</span>을 낼 때 이 부분을 중점적으로 확인하세요.</p>
+
+            <h3>2. 보철치료 (임플란트, 틀니, 브릿지)</h3>
+            <p>보철치료는 치아를 상실했을 때 인공 치아를 심는 고가의 치료입니다. <span class="highlight">**임플란트**</span>, <span class="highlight">**브릿지**</span>, <span class="highlight">**틀니**</span> 등이 여기에 해당합니다. 특히 40대 후반부터는 잇몸 건강 악화로 인해 <span class="highlight">**임플란트**</span> 수요가 급증합니다. <span class="highlight">**40대치아보험추천**</span> 시 <span class="highlight">**보철치료**</span> 보장 <span class="highlight">**금액**</span>이 높은 상품이 선호되는 경향이 있습니다. <span class="highlight">**임플란트**</span>는 1개당 <span class="highlight">**비용**</span>이 높기 때문에 <span class="highlight">**보장금액**</span>이 100만 원 이상인지 확인하는 것이 중요합니다. <span class="highlight">**치아보험순위**</span>를 매길 때 <span class="highlight">**임플란트**</span> <span class="highlight">**보장금액**</span>이 중요한 척도가 되는 이유입니다.</p>
+
+            <div class="graph-container">
+                <h3>40대 치과 치료 유형별 평균 비용 (2026년 기준)</h3>
+                <p>※ 상기 <span class="highlight">**금액**</span>은 치과 규모, 지역, 재료 종류 등에 따라 <span class="highlight">**차이점**</span>이 있습니다. 이는 평균 <span class="highlight">**예상**</span> <span class="highlight">**비용**</span>입니다.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>치료 유형</th>
+                            <th>단가 (평균)</th>
+                            <th>치아보험 보장 필요성</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>임플란트 (1개)</strong></td>
+                            <td>100만원 ~ 200만원</td>
+                            <td><span class="highlight">**매우 높음**</span>: 고가 치료로 인한 <span class="highlight">**금액**</span> 부담이 가장 큼.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>크라운 (1개)</strong></td>
+                            <td>40만원 ~ 60만원</td>
+                            <td><span class="highlight">**높음**</span>: 충치 및 신경치료 시 필수로 발생.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>인레이/온레이 (1개)</strong></td>
+                            <td>20만원 ~ 30만원</td>
+                            <td><span class="highlight">**보통**</span>: 비교적 저렴하지만 여러 개 치료 시 부담 증가.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="가입팁">
+            <h2>40대 치아보험 가입 노하우 및 체크리스트</h2>
+            <p><span class="highlight">**치아보험**</span>은 상품별로 <span class="highlight">**장단점**</span>과 <span class="highlight">**가입조건**</span>, <span class="highlight">**보장금액**</span>이 천차만별입니다. 특히 <span class="highlight">**40대치아보험**</span>은 단순히 <span class="highlight">**저렴한곳**</span>을 찾는 것보다, 미래의 <span class="highlight">**치과치료비용**</span>을 얼마나 효과적으로 대비할 수 있는지 따져보아야 합니다. 다음은 <span class="highlight">**치아보험**</span> <span class="highlight">**가입**</span> 시 반드시 확인해야 할 <span class="highlight">**가입 팁**</span>입니다.</p>
+
+            <h3>1. 면책기간과 감액기간 확인</h3>
+            <p><span class="highlight">**치아보험**</span>의 가장 큰 <span class="highlight">**차이점**</span> 중 하나는 <span class="highlight">**면책기간**</span>과 <span class="highlight">**감액기간**</span>이 존재한다는 것입니다. 이는 보험 <span class="highlight">**가입**</span> 후 일정 기간 동안 보장을 제한하거나 축소하는 기간을 말합니다. <span class="highlight">**면책기간**</span>은 보통 90일~1년으로, 이 기간 내에 발생한 치아 질환에 대해서는 보장을 받을 수 없습니다. <span class="highlight">**감액기간**</span>은 면책기간 이후 1~2년 동안 보장 <span class="highlight">**금액**</span>의 50%만 지급하는 기간입니다. <span class="highlight">**40대치아보험**</span> <span class="highlight">**가입**</span> 시 <span class="highlight">**면책기간**</span>이 짧은 상품을 선택하는 것이 유리하며, <span class="highlight">**가입**</span> 전 현재 치아 상태에 대한 충분한 고지 의무를 이행해야 합니다.</p>
+            <a href="https://www.fss.or.kr/fss/main/index.jsp" target="_blank" rel="noopener noreferrer" class="external-link">금융감독원 (FSS) 홈페이지에서 보험 관련 약관 확인하기</a>
+
+            <h3>2. 고지 의무 사항 확인 (현재 치아 상태)</h3>
+            <p><span class="highlight">**치아보험**</span>은 현재 치아가 건강한 사람을 대상으로 합니다. 따라서 <span class="highlight">**가입**</span> 전 고지 사항을 꼼꼼히 확인해야 합니다. 현재 치료 중인 치아가 있거나, 5년 이내에 치주 질환으로 치료받은 기록이 있는 경우 <span class="highlight">**가입**</span>이 거절되거나 보장 범위가 제한될 수 있습니다. <span class="highlight">**내돈내산치아보험후기**</span>를 보면 고지 의무를 제대로 이행하지 않아 나중에 보험금을 받지 못하는 경우가 많으니 주의해야 합니다.</p>
+            <a href="https://namu.wiki/w/%EC%B9%98%EC%95%84%EB%B3%B4%ED%97%98" target="_blank" rel="noopener noreferrer" class="external-link">치아보험 관련 정보 나무위키에서 더 알아보기</a>
+
+            <h3>3. 2026년 치아보험 시장 트렌드: 복합 보장형 상품</h3>
+            <p>2026년 치아보험 시장은 <span class="highlight">**갱신형**</span>과 <span class="highlight">**비갱신형**</span>의 <span class="highlight">**장단점**</span>을 보완한 복합형 상품들이 <span class="highlight">**추천**</span>되고 있습니다. <span class="highlight">**40대**</span>는 치과 치료 수요가 늘어나는 시점이기 때문에, <span class="highlight">**보존치료**</span> 보장은 <span class="highlight">**갱신형**</span>으로 저렴하게 유지하고, 고가의 <span class="highlight">**임플란트**</span> <span class="highlight">**보장**</span>은 <span class="highlight">**비갱신형**</span>으로 강화하는 상품 구조도 고려해볼 만합니다. 또한, <span class="highlight">**치아보험순위**</span> 상위권 상품들은 잇몸 질환(치주염) 치료 보장이나 치과 스케일링 보장을 기본 특약으로 포함하는 추세입니다.</p>
+
+            <h3>4. 치아보험 저렴한곳 찾기: 비교 견적 필수</h3>
+            <p><span class="highlight">**치아보험**</span>은 <span class="highlight">**보험료**</span>가 보험사별로 크게 <span class="highlight">**차이점**</span>이 있습니다. 이는 각 보험사마다 손해율과 상품 설계가 다르기 때문입니다. <span class="highlight">**치아보험가격비교**</span>를 통해 여러 회사의 <span class="highlight">**견적**</span>을 받아보는 것이 <span class="highlight">**저렴한곳**</span>을 찾는 가장 확실한 방법입니다. <span class="highlight">**40대치아보험**</span>은 <span class="highlight">**비용**</span> 절감을 위해 <span class="highlight">**가입**</span> 초기부터 신중하게 비교해야 합니다.</p>
+        </section>
+
+        <section id="자주묻는질문">
+            <h2>자주 묻는 질문 (FAQ)</h2>
+            <dl class="accordion">
+                <dt tabindex="0" aria-expanded="false"><strong>Q. 40대 후반, 치아보험 가입이 늦은 건 아닌가요?</strong></dt>
+                <dd>A. 40대는 치아보험 <span class="highlight">**가입**</span>의 적기입니다. 50대 이상으로 넘어가면 치아 질환 이력 때문에 <span class="highlight">**가입조건**</span>이 까다로워질 수 있습니다. 특히 <span class="highlight">**비갱신형**</span>을 <span class="highlight">**가입**</span>할 경우 40대에 <span class="highlight">**가입**</span>하면 보험료가 고정되므로, 미래의 고액 <span class="highlight">**치과치료비용**</span>을 대비하는 데 매우 유리합니다.</dd>
+
+                <dt tabindex="0" aria-expanded="false"><strong>Q. 현재 충치 치료 중인데, 치아보험 가입이 가능한가요?</strong></dt>
+                <dd>A. 현재 치료 중인 치아에 대해서는 보장이 제외될 수 있습니다. <span class="highlight">**치아보험**</span>은 <span class="highlight">**가입**</span> 시 고지 의무가 있으며, 이미 진단받았거나 치료 중인 치아는 보장이 어렵습니다. 하지만 해당 치아를 제외한 나머지 건강한 치아에 대해서는 <span class="highlight">**가입**</span>이 가능합니다. 정확한 내용은 <span class="highlight">**전문가 상담**</span>을 통해 확인하시는 것을 <span class="highlight">**추천**</span>드립니다.</dd>
+
+                <dt tabindex="0" aria-expanded="false"><strong>Q. 치아보험 면책기간 중에도 임플란트 보장이 되나요?</strong></dt>
+                <dd>A. <span class="highlight">**면책기간**</span> 중에는 <span class="highlight">**임플란트**</span> 보장을 받을 수 없습니다. <span class="highlight">**면책기간**</span>은 <span class="highlight">**치아보험**</span> <span class="highlight">**가입**</span> 후 약 90일~1년이 일반적이며, <span class="highlight">**감액기간**</span>이 추가로 적용되는 경우가 많습니다. <span class="highlight">**40대치아보험**</span> <span class="highlight">**가입**</span> 시 <span class="highlight">**견적**</span>을 꼼꼼히 확인하여 <span class="highlight">**면책기간**</span>과 <span class="highlight">**감액기간**</span>을 체크하세요.</dd>
+
+                <dt tabindex="0" aria-expanded="false"><strong>Q. 치과 치료 시 보험금은 언제 지급되나요?</strong></dt>
+                <dd>A. 치료를 완료하고 보험금 청구 서류(진단서, 치료 확인서, 영수증 등)를 제출하면 심사 후 지급됩니다. 보존치료의 경우 치료 완료 후 청구하면 됩니다. <span class="highlight">**임플란트**</span> 등 보철치료의 경우에도 최종 보철물 장착 완료 시점에 <span class="highlight">**보장금액**</span>이 지급됩니다.</dd>
+                <a href="https://www.k-health.or.kr/" target="_blank" rel="noopener noreferrer" class="external-link">국민건강보험공단 홈페이지에서 치과 건강보험 정보 확인하기</a>
+            </dl>
+        </section>
+
+        <section id="상담신청">
+            <h2>40대 맞춤 치아보험 무료 상담 신청 (2026년 최신 상품 분석)</h2>
+            <p><span class="highlight">**40대치아보험추천**</span>을 원하신다면 지금 바로 전문가에게 <span class="highlight">**무료 상담**</span>을 받아보세요. 고객님의 치아 상태, <span class="highlight">**예상**</span> <span class="highlight">**치과치료비용**</span>, <span class="highlight">**희망 보험료**</span> <span class="highlight">**금액**</span>에 맞춰 <span class="highlight">**치아보험 순위**</span>별 <span class="highlight">**장단점**</span>을 분석하여 최적의 상품을 안내해 드립니다. <span class="highlight">**비갱신형**</span> <span class="highlight">**치아보험**</span> <span class="highlight">**가입**</span>은 <span class="highlight">**40대**</span> 재정 설계의 핵심입니다.</p>
+
+            <div class="input-form">
+                <form action="#" method="post">
+                    <label for="name">이름:</label>
+                    <input type="text" id="name" name="name" placeholder="이름을 입력해 주세요" required>
+
+                    <label for="age">나이:</label>
+                    <input type="number" id="age" name="age" placeholder="예: 45세" required min="40" max="49">
+
+                    <label for="phone">연락처:</label>
+                    <input type="text" id="phone" name="phone" placeholder="예: 010-1234-5678" required>
+
+                    <label for="currentDentalStatus">현재 치아 상태:</label>
+                    <select id="currentDentalStatus" name="currentDentalStatus" required>
+                        <option value="">-- 선택하세요 --</option>
+                        <option value="good">건강함 (치과 방문 이력 거의 없음)</option>
+                        <option value="checkup">정기 검진만 받는 중</option>
+                        <option value="treatment_planned">치과 치료 예정 (충치, 신경치료 등)</option>
+                        <option value="treatment_in_progress">현재 치료 중</option>
+                        <option value="implant_planned">임플란트 필요 진단 받음</option>
+                    </select>
+
+                    <label for="interestType">관심 있는 보장 유형:</label>
+                    <select id="interestType" name="interestType" required>
+                        <option value="">-- 선택하세요 --</option>
+                        <option value="non_renewal">비갱신형 (장기 고정 보험료)</option>
+                        <option value="renewal">갱신형 (단기 저렴한 보험료)</option>
+                        <option value="implant">임플란트 집중 보장</option>
+                        <option value="crown">크라운 및 보존치료 집중 보장</option>
+                        <option value="comprehensive">종합 보장 (임플란트 + 크라운)</option>
+                    </select>
+
+                    <label for="message">추가 문의 사항 (선택):</label>
+                    <textarea id="message" name="message" rows="4" placeholder="궁금한 점을 자세히 남겨주세요."></textarea>
+
+                    <button type="submit">무료 상담 신청하기</button>
+                </form>
+            </div>
+            <a href="https://www.ins.or.kr/" target="_blank" rel="noopener noreferrer" class="external-link">생명보험협회 또는 손해보험협회 (가상의 협회 링크)에서 보험 상품 정보 확인하기</a>
+        </section>
+
+        <section id="footer-info">
+            <h2>40대 치아보험 가입, 지금이 적기입니다</h2>
+            <p><strong>40대치아보험추천</strong>은 단순히 하나의 상품을 <span class="highlight">**가입**</span>하는 것을 넘어, 미래의 건강과 재정 상태를 지키는 중요한 투자입니다. 40대 중반 이후 급증하는 치과 치료 <span class="highlight">**비용**</span>에 대비하고, <span class="highlight">**비갱신형**</span>을 통해 안정적인 <span class="highlight">**보험료**</span>를 유지하는 것이 현명합니다. 저희 플랫폼은 <span class="highlight">**치아보험가격비교**</span>를 통해 고객님에게 가장 <span class="highlight">**저렴한곳**</span>이자, 가장 <span class="highlight">**장점**</span>이 많은 상품을 찾아드릴 것을 약속합니다. 더 늦기 전에 <span class="highlight">**40대치아보험견적**</span>을 받아보세요.</p>
+        </section>
     </main>
-  </body>
-</html>
+
+    <!-- JavaScript for accordion functionality -->
+    <script>
+        document.querySelectorAll('dl.accordion dt').forEach((dt) => {
+            dt.addEventListener('click', () => {
+                const expanded = dt.getAttribute('aria-expanded') === 'true' || false;
+                dt.setAttribute('aria-expanded', !expanded);
+                dt.classList.toggle('active');
+            });
+            dt.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    dt.click();
+                }
+            });
+        });
+    </script>
+
+  
